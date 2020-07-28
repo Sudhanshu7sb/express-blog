@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <a href="/articles"> &#8592; List Of Articles</a>
+    <h2 class="articleTitle"><%= article.title %></h2>
+    <p class="articleDescription"><%= article.description %></p>
+    <h5 class="articleCreationTime">Created : <%= article.createdAt %></h5>
+
+    <form
+      class="commentBox"
+      action="/articles/<%= article.id %>/comments"
+      method="POST"
+    >
+      <!-- <textarea name="content" id="" cols="50" rows="5"></textarea> -->
+      <input type="text" name="content" />
+      <input type="submit" value="Add Comment" class="addCommentBtn" />
+    </form>
+
+    <% comments.forEach(comment => { %>
+    <p class="comment">
+      <%= console.log(comment) %> <%= comment.content %><a
+        href="/comments/<%= comment._id %>/update"
+      >
+        update</a
+      >
+      <a href="/comments/<%= comment._id %>/delete">delete</a>
+    </p>
+    <!-- <h5 class="articleCreationTime">Created: <%= comment.createdAt %></h5> -->
+    <h5 class="articleCreationTime">Updated: <%= comment.updatedAt %></h5>
+    <% }) %>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <a href="/articles/new">Add Article Here</a>
+    <h1 class="headingForList">Articles</h1>
+
+    <section class="articlesContainer">
+      <article class="post-title">
+        <% if(articles.length) { %> <% articles.forEach(article => { %>
+        <a href="/articles/<%= article.id %>">
+          <h2 class="articleTitle"><%= article.title %> &#8594;</h2>
+        </a>
+      </article>
+      <article class="crud-link">
+        <a href="/articles/<%= article.id %>">View Post</a>
+        <a href="/articles/<%= article.id %>/update">Edit Post</a>
+        <a href="/articles/<%= article.id %>/delete">Delete Post</a>
+
+        <% }) %> <% } else { %>
+        <h2>No Article to Show!</h2>
+
+        <% } %>
+      </article>
+    </section>
+  </body>
+</html>
